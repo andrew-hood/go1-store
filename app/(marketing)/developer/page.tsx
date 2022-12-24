@@ -6,6 +6,7 @@ import {
   GlobeAltIcon,
   ScaleIcon,
 } from "@heroicons/react/24/outline";
+import Image from "next/image";
 
 const features = [
   {
@@ -34,6 +35,22 @@ const features = [
   },
 ];
 
+const featureImages = [
+  [
+    "https://images.unsplash.com/photo-1512486130939-2c4f79935e4f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1760&q=80",
+    "https://images.unsplash.com/photo-1574192323942-cec035ad64f2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80",
+  ],
+  [
+    "https://images.unsplash.com/photo-1510674485131-dc88d96369b4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=949&q=80",
+    "https://images.unsplash.com/photo-1529338296731-c4280a44fc48?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80",
+    "https://images.unsplash.com/photo-1573643808568-4a3c26f3a06b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=988&q=80",
+  ],
+  [
+    "https://images.unsplash.com/photo-1491947153227-33d59da6c448?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1760&q=80",
+    "https://images.unsplash.com/photo-1487611459768-bd414656ea10?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80",
+  ],
+];
+
 export default function DeveloperPage() {
   return (
     <>
@@ -50,75 +67,40 @@ export default function DeveloperPage() {
           </div>
           <div>
             <div className="mt-10">
-              {/* Decorative image grid */}
               <div
                 aria-hidden="true"
                 className="pointer-events-none lg:absolute lg:inset-y-0 lg:mx-auto lg:w-full lg:max-w-7xl"
               >
                 <div className="absolute transform sm:left-1/2 sm:top-0 sm:translate-x-8 lg:left-1/2 lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-8">
                   <div className="flex items-center space-x-6 lg:space-x-8">
-                    <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
-                      <div className="h-64 w-44 overflow-hidden rounded-lg sm:opacity-0 lg:opacity-100">
-                        <img
-                          src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-01.jpg"
-                          alt=""
-                          className="h-full w-full object-cover object-center"
-                        />
+                    {featureImages.map((col, colIndex) => (
+                      <div
+                        key={`col-${colIndex}`}
+                        className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8"
+                      >
+                        {col.map((image, imageIndex) => (
+                          <div
+                            key={`image-${colIndex}-${imageIndex}`}
+                            className="h-64 w-44 overflow-hidden rounded-lg sm:opacity-0 lg:opacity-100"
+                          >
+                            <Image
+                              src={image}
+                              width={176}
+                              height={256}
+                              alt=""
+                              className="h-full w-full object-cover object-center"
+                            />
+                          </div>
+                        ))}
                       </div>
-                      <div className="h-64 w-44 overflow-hidden rounded-lg">
-                        <img
-                          src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-02.jpg"
-                          alt=""
-                          className="h-full w-full object-cover object-center"
-                        />
-                      </div>
-                    </div>
-                    <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
-                      <div className="h-64 w-44 overflow-hidden rounded-lg">
-                        <img
-                          src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-03.jpg"
-                          alt=""
-                          className="h-full w-full object-cover object-center"
-                        />
-                      </div>
-                      <div className="h-64 w-44 overflow-hidden rounded-lg">
-                        <img
-                          src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-04.jpg"
-                          alt=""
-                          className="h-full w-full object-cover object-center"
-                        />
-                      </div>
-                      <div className="h-64 w-44 overflow-hidden rounded-lg">
-                        <img
-                          src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-05.jpg"
-                          alt=""
-                          className="h-full w-full object-cover object-center"
-                        />
-                      </div>
-                    </div>
-                    <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
-                      <div className="h-64 w-44 overflow-hidden rounded-lg">
-                        <img
-                          src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-06.jpg"
-                          alt=""
-                          className="h-full w-full object-cover object-center"
-                        />
-                      </div>
-                      <div className="h-64 w-44 overflow-hidden rounded-lg">
-                        <img
-                          src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-07.jpg"
-                          alt=""
-                          className="h-full w-full object-cover object-center"
-                        />
-                      </div>
-                    </div>
+                    ))}
                   </div>
                 </div>
               </div>
 
               <Link
                 href="/login"
-                className="inline-block rounded-md border border-transparent bg-eden-600 py-3 px-8 text-center font-medium text-white hover:bg-eden-700"
+                className="inline-block rounded-md border border-transparent bg-green-yellow-500 py-3 px-8 text-center font-medium text-eden-600 hover:bg-green-yellow-600"
               >
                 Get started
               </Link>
@@ -167,26 +149,25 @@ export default function DeveloperPage() {
         </div>
       </div>
 
-      {/* CTA section */}
-      <section aria-labelledby="sale-heading">
+      <section aria-labelledby="cta-heading">
         <div className="overflow-hidden pt-32 sm:pt-14">
           <div className="bg-gray-800">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
               <div className="relative pt-48 pb-16 sm:pb-24">
                 <div>
                   <h2
-                    id="sale-heading"
+                    id="cta-heading"
                     className="text-4xl font-bold tracking-tight text-white md:text-5xl"
                   >
-                    Final Stock.
+                    Create your
                     <br />
-                    Up to 50% off.
+                    first application
                   </h2>
                   <div className="mt-6 text-base">
-                    <a href="#" className="font-semibold text-white">
-                      Shop the sale
+                    <Link href="/login" className="font-semibold text-white">
+                      Get started for free
                       <span aria-hidden="true"> &rarr;</span>
-                    </a>
+                    </Link>
                   </div>
                 </div>
 
@@ -194,52 +175,64 @@ export default function DeveloperPage() {
                   <div className="ml-24 flex min-w-max space-x-6 sm:ml-3 lg:space-x-8">
                     <div className="flex space-x-6 sm:flex-col sm:space-x-0 sm:space-y-6 lg:space-y-8">
                       <div className="flex-shrink-0">
-                        <img
+                        <Image
                           className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72"
-                          src="https://tailwindui.com/img/ecommerce-images/home-page-03-category-01.jpg"
+                          src="https://images.unsplash.com/photo-1556559322-b5071efadc88?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2669&q=80"
                           alt=""
+                          width={256}
+                          height={256}
                         />
                       </div>
 
                       <div className="mt-6 flex-shrink-0 sm:mt-0">
-                        <img
+                        <Image
                           className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72"
-                          src="https://tailwindui.com/img/ecommerce-images/home-page-03-category-02.jpg"
+                          src="https://images.unsplash.com/photo-1535957998253-26ae1ef29506?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1336&q=80"
                           alt=""
+                          width={256}
+                          height={256}
                         />
                       </div>
                     </div>
                     <div className="flex space-x-6 sm:-mt-20 sm:flex-col sm:space-x-0 sm:space-y-6 lg:space-y-8">
                       <div className="flex-shrink-0">
-                        <img
+                        <Image
                           className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72"
-                          src="https://tailwindui.com/img/ecommerce-images/home-page-03-favorite-01.jpg"
+                          src="https://images.unsplash.com/photo-1552581466-ac9fec8dd978?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80"
                           alt=""
+                          width={256}
+                          height={256}
                         />
                       </div>
 
                       <div className="mt-6 flex-shrink-0 sm:mt-0">
-                        <img
+                        <Image
                           className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72"
-                          src="https://tailwindui.com/img/ecommerce-images/home-page-03-favorite-02.jpg"
+                          src="https://images.unsplash.com/photo-1542546068979-b6affb46ea8f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80"
                           alt=""
+                          width={256}
+                          height={256}
                         />
                       </div>
                     </div>
                     <div className="flex space-x-6 sm:flex-col sm:space-x-0 sm:space-y-6 lg:space-y-8">
                       <div className="flex-shrink-0">
-                        <img
+                        <Image
                           className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72"
-                          src="https://tailwindui.com/img/ecommerce-images/home-page-03-category-01.jpg"
+                          src="https://images.unsplash.com/photo-1558274803-5addf237d6dd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80"
                           alt=""
+                          width={256}
+                          height={256}
                         />
                       </div>
 
                       <div className="mt-6 flex-shrink-0 sm:mt-0">
-                        <img
+                        <Image
                           className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72"
-                          src="https://tailwindui.com/img/ecommerce-images/home-page-03-category-02.jpg"
+                          src="https://images.unsplash.com/photo-1497215641119-bbe6d71ebaae?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80"
                           alt=""
+                          width={256}
+                          height={256}
                         />
                       </div>
                     </div>

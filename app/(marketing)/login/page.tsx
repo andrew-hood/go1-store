@@ -94,7 +94,7 @@ export default function LoginPage() {
                     href="/dashboard"
                     className="inline-flex w-full justify-center rounded-md border border-green-yellow-600 bg-green-yellow-500 py-2 px-4 text-sm font-medium text-eden-600 shadow-sm hover:bg-green-yellow-600"
                   >
-                    Sign in with Go1 OAuth
+                    Sign in with Go1
                   </Link>
                 </div>
               </div>

@@ -1,16 +1,19 @@
 import React from "react";
-import { CameraIcon } from "@heroicons/react/20/solid";
+import PocketBase from "pocketbase";
 
-export default function ShowcaseAppPage() {
+export default async function ShowcaseAppPage({ params }: any) {
+  const pb = new PocketBase("https://go1-store.fly.dev");
+  const integration = await pb.collection("integrations").getOne(params.id);
+
   return (
     <div className="overflow-hidden">
       <div className="relative mx-auto max-w-7xl py-16 px-4 sm:px-6 lg:px-8">
-        <div className="absolute top-0 bottom-0 left-3/4 hidden w-screen bg-gray-50 lg:block" />
+        <div className="absolute top-0 bottom-0 left-3/4 hidden w-screen bg-slate-50 lg:block" />
         <div className="mx-auto max-w-prose text-base lg:grid lg:max-w-none lg:grid-cols-2 lg:gap-8">
           <div>
-            <h2 className="text-lg font-semibold text-eden-600">Case Study</h2>
+            <h2 className="text-lg font-semibold text-eden-600">Integration</h2>
             <h3 className="mt-2 text-3xl font-bold leading-8 tracking-tight text-gray-900 sm:text-4xl">
-              Meet Whitney
+              {integration.name}
             </h3>
           </div>
         </div>
@@ -38,7 +41,7 @@ export default function ShowcaseAppPage() {
                     y={0}
                     width={4}
                     height={4}
-                    className="text-gray-200"
+                    className="text-slate-400"
                     fill="currentColor"
                   />
                 </pattern>
@@ -54,29 +57,18 @@ export default function ShowcaseAppPage() {
                 <div className="aspect-w-12 aspect-h-7 lg:aspect-none">
                   <img
                     className="rounded-lg object-cover object-center shadow-lg"
-                    src="https://images.unsplash.com/photo-1546913199-55e06682967e?ixlib=rb-1.2.1&auto=format&fit=crop&crop=focalpoint&fp-x=.735&fp-y=.55&w=1184&h=1376&q=80"
-                    alt="Whitney leaning against a railing on a downtown street"
+                    src={`https://go1-store.fly.dev/api/files/integrations/${integration.id}/${integration.feature_image}`}
+                    alt={integration.name}
                     width={1184}
                     height={1376}
                   />
                 </div>
-                <figcaption className="mt-3 flex text-sm text-gray-500">
-                  <CameraIcon
-                    className="h-5 w-5 flex-none text-gray-400"
-                    aria-hidden="true"
-                  />
-                  <span className="ml-2">Photograph by Marcus O’Leary</span>
-                </figcaption>
               </figure>
             </div>
           </div>
           <div className="mt-8 lg:mt-0">
             <div className="mx-auto max-w-prose text-base lg:max-w-none">
-              <p className="text-lg text-gray-500">
-                Sagittis scelerisque nulla cursus in enim consectetur quam.
-                Dictum urna sed consectetur neque tristique pellentesque.
-                Blandit amet, sed aenean erat arcu morbi.
-              </p>
+              <p className="text-lg text-gray-500">{integration.description}</p>
             </div>
             <div className="prose prose-eden mx-auto mt-5 text-gray-500 lg:col-start-1 lg:row-start-1 lg:max-w-none">
               <p>
