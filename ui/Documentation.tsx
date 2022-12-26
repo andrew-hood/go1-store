@@ -6,6 +6,8 @@ import { Endpoint } from "go1d-api-doc";
 export default function Documentation() {
   return (
     <Endpoint
+      path=""
+      method=""
       operation={{
         tags: ["Test"],
         parameters: [

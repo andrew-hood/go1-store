@@ -22,7 +22,7 @@
     "clsx": "^1.2.1",
     "eslint": "8.30.0",
     "eslint-config-next": "13.0.7",
-    "go1d-api-doc": "^0.0.6",
+    "go1d-api-doc": "^0.0.9",
     "next": "13.0.7",
     "pocketbase": "^0.9.0",
     "react": "18.2.0",
